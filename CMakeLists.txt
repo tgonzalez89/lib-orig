@@ -42,15 +42,42 @@ endif()
 
 target_include_directories(mylib
   PUBLIC
-    ${PROJECT_SOURCE_DIR}/include
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
 )
 
 if(USE_EXTENSION)
   add_dependencies(mylib mylib-e)
   target_link_libraries(mylib PUBLIC mylib-e)
-  target_include_directories(mylib PUBLIC ${mylib-e_SOURCE_DIR}/include)
+  #if(BUILD_DEPS)
+  #  target_include_directories(mylib
+  #    PRIVATE
+  #      $<BUILD_INTERFACE:${mylib-e_SOURCE_DIR}/include>
+  #  )
+  #endif()
 endif()
 
 if(BUILD_EXAMPLES)
   add_subdirectory(examples)
 endif()
+
+install(TARGETS mylib
+  EXPORT mylib-config
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+install(
+  DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+  DESTINATION include
+)
+export(TARGETS mylib
+  FILE "${CMAKE_CURRENT_BINARY_DIR}/mylib_Targets.cmake"
+)
+install(
+  FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/mylib-config.cmake
+  DESTINATION cmake
+)
+install(EXPORT mylib-config
+  FILE mylib_Targets.cmake
+  DESTINATION cmake
+)

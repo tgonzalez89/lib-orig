@@ -1,0 +1,5 @@
+if(USE_EXTENSION)
+  include(CMakeFindDependencyMacro)
+  find_dependency(mylib-e)
+endif()
+include(${CMAKE_CURRENT_LIST_DIR}/mylib_Targets.cmake)

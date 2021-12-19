@@ -2,12 +2,14 @@ cmake_minimum_required(VERSION 3.12)
 
 project(mylib-examples)
 
+if(USE_EXTENSION)
+  add_compile_definitions(USE_EXTENSION)
+endif()
+
 if(NOT DEFINED BUILD_EXAMPLES)
   set(BUILD_EXAMPLES ON)
 
   find_package(mylib)
-
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 endif()
 
 if(BUILD_EXAMPLES)
@@ -19,10 +21,7 @@ if(BUILD_EXAMPLES)
   )
 
   if(TARGET mylib)
-    target_link_libraries(example
-      PRIVATE
-        mylib
-    )
+    target_link_libraries(example PRIVATE mylib)
   else()
     message(FATAL_ERROR "Cannot find target mylib")
   endif()
