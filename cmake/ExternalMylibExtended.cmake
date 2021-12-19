@@ -1,6 +1,6 @@
 FetchContent_Declare(
   mylib-e
-  GIT_REPOSITORY https://github.com/tgonzalez89/lib-extension.git
+  GIT_REPOSITORY https://github.com/tgonzalez89/mylib-e.git
   GIT_TAG main
 )
 FetchContent_GetProperties(mylib-e)
