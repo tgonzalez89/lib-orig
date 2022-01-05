@@ -29,10 +29,10 @@ int main(int argc, char *argv[]) {
   int result;
   result = mylib::add(nums[0], nums[1]);
   result = mylib::sub(nums[0], nums[1]);
-#ifdef USE_EXTENSION
+/*#ifdef USE_EXTENSION
   result = mylib::mul(nums[0], nums[1]);
   result = mylib::div(nums[0], nums[1]);
-#endif
+#endif*/
 
   return 0;
 }

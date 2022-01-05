@@ -3,8 +3,8 @@
 rm -rf build install
 
 cmake -S . -B build \
--DSHARED_LIB=OFF \
--DBUILD_EXAMPLES=ON \
+-DSHARED_LIB=ON \
+-DBUILD_EXAMPLES=OFF \
 -DUSE_EXTENSION=ON \
 -DBUILD_DEPS=ON \
 -DCMAKE_INSTALL_PREFIX=install \

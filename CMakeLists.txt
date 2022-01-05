@@ -46,16 +46,16 @@ target_include_directories(mylib
     $<INSTALL_INTERFACE:include>
 )
 
-if(USE_EXTENSION)
-  add_dependencies(mylib mylib-e)
-  target_link_libraries(mylib PUBLIC mylib-e)
+#if(USE_EXTENSION)
+#  add_dependencies(mylib mylib-e)
+#  target_link_libraries(mylib PUBLIC mylib-e)
   #if(BUILD_DEPS)
   #  target_include_directories(mylib
   #    PRIVATE
   #      $<BUILD_INTERFACE:${mylib-e_SOURCE_DIR}/include>
   #  )
   #endif()
-endif()
+#endif()
 
 if(BUILD_EXAMPLES)
   add_subdirectory(examples)

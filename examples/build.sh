@@ -4,6 +4,6 @@ rm -rf build
 
 cmake -S . -B build \
 -DCMAKE_PREFIX_PATH="../install;../../mylib-e/install" \
--DUSE_EXTENSION=ON
+-DUSE_EXTENSION=OFF
 
 cmake --build build -j
